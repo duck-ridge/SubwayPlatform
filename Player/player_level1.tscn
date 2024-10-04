@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk78dyrnv1j83"]
+
+[ext_resource type="Texture2D" uid="uid://cg6y8hslryqax" path="res://Asset/square.png" id="1_67310"]
+[ext_resource type="Script" path="res://Player/player_level1.gd" id="1_avowl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hhwf"]
+size = Vector2(83, 83)
+
+[node name="PlayerLevel1" type="RigidBody2D"]
+script = ExtResource("1_avowl")
+
+[node name="Triangle" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.443137, 0.443137, 1)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("1_67310")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+scale = Vector2(0.85, 0.85)
+shape = SubResource("RectangleShape2D_7hhwf")
