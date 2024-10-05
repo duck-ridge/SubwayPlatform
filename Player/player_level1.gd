@@ -28,5 +28,5 @@ func _process(delta: float) -> void:
 		apply_central_force(direction * move_speed)
 
 func push_level1_effect():
-	apply_central_force(Vector2(1, 0) * 120000)
+	apply_central_force(Vector2(0, 1) * 120000)
 	print("push_level1_effect here")

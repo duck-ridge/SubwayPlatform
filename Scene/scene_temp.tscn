@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://do4qh1aur645f"]
+[gd_scene load_steps=10 format=3 uid="uid://do4qh1aur645f"]
 
 [ext_resource type="Script" path="res://Scene/scene_temp.gd" id="1_uwx1d"]
 [ext_resource type="Texture2D" uid="uid://dyvydgy63wsqg" path="res://Asset/railway.png" id="1_xjgo4"]
@@ -10,17 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://bwrtmwmbh410y" path="res://Char/passenger.tscn" id="8_4cye6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plcb6"]
-
-[sub_resource type="Curve" id="Curve_gn4e8"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0782123, 1), 0.0, 0.0, 0, 0, Vector2(0.120112, 0.836342), 0.0, 0.0, 0, 0, Vector2(0.871508, 0.833254), 0.0, 0.0, 0, 0, Vector2(0.907821, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 6
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf81y"]
-size = Vector2(234, 793.333)
+size = Vector2(20, 62.6667)
 
 [node name="SceneTemp" type="Node2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_uwx1d")
+
+[node name="Platform" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(256.667, 210.667)
+rotation = 1.5708
+texture = ExtResource("2_km68p")
 
 [node name="ParallaxBackgroundLow" type="ParallaxBackground" parent="."]
 
@@ -54,7 +54,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_phihs")
 
 [node name="PlayerLevel1" parent="." instance=ExtResource("3_d2jha")]
-position = Vector2(82, 313.333)
+position = Vector2(32, 403.333)
 mass = 5.0
 move_speed = 5000.0
 metadata/_edit_group_ = true
@@ -62,47 +62,24 @@ metadata/_edit_group_ = true
 [node name="Camera2D" type="Camera2D" parent="PlayerLevel1"]
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(419.333, 211.333)
+position = Vector2(251.333, 388.667)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_plcb6")
 
 [node name="Square" type="Sprite2D" parent="Area2D"]
-position = Vector2(-75, 2.08165e-12)
+position = Vector2(2.08165e-12, -75)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("5_gmvvn")
-
-[node name="CrowdParticles2D" type="CPUParticles2D" parent="."]
-visible = false
-position = Vector2(296.667, 258)
-amount = 120
-lifetime = 1000.0
-preprocess = 600.0
-texture = ExtResource("5_gmvvn")
-emission_shape = 3
-emission_rect_extents = Vector2(100, 400)
-spread = 180.0
-gravity = Vector2(2.08165e-12, 2.08165e-12)
-initial_velocity_min = 4.0
-initial_velocity_max = 6.0
-damping_min = 10.0
-damping_max = 10.0
-scale_amount_curve = SubResource("Curve_gn4e8")
-
-[node name="CrowdWall" type="StaticBody2D" parent="CrowdParticles2D"]
-position = Vector2(-296.667, -258)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CrowdParticles2D/CrowdWall"]
-position = Vector2(292.333, 256.667)
-shape = SubResource("RectangleShape2D_sf81y")
 
 [node name="LightSys" type="Node" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="LightSys"]
-position = Vector2(261, 379)
-scale = Vector2(2, 2)
+position = Vector2(352, 344)
+scale = Vector2(4, 4)
 texture = ExtResource("7_c28w8")
+metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0196078, 0.0196078, 0.0196078, 1)
@@ -154,11 +131,6 @@ stand = true
 [node name="GenerateTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
-
-[node name="Platform" type="Sprite2D" parent="."]
-position = Vector2(256.667, 210.667)
-rotation = 1.5708
-texture = ExtResource("2_km68p")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="GenerateTimer" to="." method="_on_generate_timer_timeout"]

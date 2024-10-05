@@ -21,8 +21,8 @@ func _on_area_2d_body_entered(body):
 func play_square_push():
 	var tween = create_tween()
 	tween.tween_property($Area2D/Square, "scale", Vector2(0.55, 0.55), 0.1).from(Vector2(0, 0))
-	tween.tween_property($Area2D/Square, "position", Vector2.ZERO, 0.15).from(Vector2(-75, 0))
-	tween.tween_property($Area2D/Square, "position", Vector2(-75, 0), 0.25).from(Vector2(0, 0))
+	tween.tween_property($Area2D/Square, "position", Vector2.ZERO, 0.15).from(Vector2(0, -75))
+	tween.tween_property($Area2D/Square, "position", Vector2(0, -75), 0.25).from(Vector2(0, 0))
 	tween.tween_property($Area2D/Square, "scale", Vector2.ZERO, 0.25).from(Vector2(0.65, 0.65))
 	pass
 
