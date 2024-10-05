@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwrtmwmbh410y"]
+
+[ext_resource type="Script" path="res://Char/passenger.gd" id="1_d7lhs"]
+[ext_resource type="Texture2D" uid="uid://7rux2j2bvag" path="res://Asset/triangle.png" id="2_216fm"]
+
+[node name="Passenger" type="CharacterBody2D"]
+script = ExtResource("1_d7lhs")
+
+[node name="Triangle" type="Sprite2D" parent="."]
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_216fm")
+
+[node name="DestoryTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="timeout" from="DestoryTimer" to="." method="_on_destory_timer_timeout"]

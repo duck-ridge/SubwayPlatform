@@ -25,3 +25,29 @@ func play_square_push():
 	tween.tween_property($Area2D/Square, "position", Vector2(-75, 0), 0.25).from(Vector2(0, 0))
 	tween.tween_property($Area2D/Square, "scale", Vector2.ZERO, 0.25).from(Vector2(0.65, 0.65))
 	pass
+
+@onready var pasgr = preload("res://Char/passenger.tscn")
+func generate_passenger():
+	var pasgr_instance_1 = pasgr.instantiate()
+	var pasgr_instance_2 = pasgr.instantiate()
+	
+	var start_point_down = Vector2(0, randi_range(0, 300))
+	var start_point_up = Vector2(600, randi_range(0, 300))
+	
+	pasgr_instance_1.position = start_point_up
+	pasgr_instance_2.position = start_point_down
+	
+	pasgr_instance_1.go_up = true
+	pasgr_instance_2.go_up = false
+	
+	$PassengerMovingSys.add_child(pasgr_instance_1)
+	$PassengerMovingSys.add_child(pasgr_instance_2)
+	#get_node("PassengerMovingSys").add_child(pasgr_instance_2)
+	add_child(pasgr_instance_2)
+	
+	pass
+
+
+func _on_generate_timer_timeout():
+	print("X")
+	generate_passenger()
