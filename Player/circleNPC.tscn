@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddfctowlogfba"]
+
+[ext_resource type="Texture2D" uid="uid://03d4k1i7lo7a" path="res://Asset/circle.png" id="1_esxyy"]
+[ext_resource type="Script" path="res://Player/circleNPC.gd" id="1_javmd"]
+
+[node name="CircleNPC" type="CharacterBody2D"]
+script = ExtResource("1_javmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_esxyy")

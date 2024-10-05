@@ -8,6 +8,8 @@ func _ready():
 	linear_damp = 8.0
 
 func _process(delta: float) -> void:
+	Global.player_pos = position
+	
 	var direction = Vector2.ZERO
 
 	# 获取输入
