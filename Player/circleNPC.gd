@@ -4,8 +4,23 @@ var is_followed: bool = false
 var can_followed: bool = false
 var speed: int = 150
 var range
+
+var is_pulsing: bool = false
+
+
+func pulsing():
+	if is_pulsing == false:
+		return
+	var pulsing_tween = create_tween()
+	pulsing_tween.set_loops()
+	pulsing_tween.tween_property($Sprite2D, "scale", Vector2(0.4, 0.4), 0.45).from(Vector2(0.5, 0.5))
+	pulsing_tween.tween_property($Sprite2D, "scale", Vector2(0.5, 0.5), 0.45).from(Vector2(0.4, 0.4))
+	pass
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
+	pulsing()
 	SignalBus.connect("help_NPC", hold_hand)
 	SignalBus.connect("stop_breath_audio", stopplay_breath)
 	#is_followed = true
@@ -40,8 +55,14 @@ func _process(delta):
 
 
 func _on_breath_timer_timeout():
+	is_pulsing = true
+	pulsing()
 	$AudioBreath.play()
+	print("XXXX")
+	
 func stopplay_breath():
+	is_pulsing = true
+	#pulsing_tween.stop()
 	$AudioBreath.playing = false
 	$AudioGlow.play()
 	print("XXX")

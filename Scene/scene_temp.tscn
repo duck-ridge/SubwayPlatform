@@ -151,7 +151,7 @@ texture = ExtResource("7_c28w8")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 scale = Vector2(1.5, 1.5)
-color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+color = Color(0.0196078, 0.0196078, 0.0196078, 0)
 
 [node name="PassengerMovingSys" type="Node" parent="."]
 
@@ -314,23 +314,39 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(31.3334, 71.333, -93.3333, 74.6664, -106.667, -66.667, -103.333, -275.334, 22.6667, -274)
 
 [node name="ExitSign1" type="Sprite2D" parent="."]
-position = Vector2(-245.333, 319.333)
+position = Vector2(-299.569, 74.9166)
 scale = Vector2(0.385714, 0.385714)
 texture = ExtResource("11_7686v")
 
 [node name="ExitSign2" type="Sprite2D" parent="."]
-position = Vector2(294.667, 324)
+position = Vector2(240.431, 79.5836)
 scale = Vector2(0.385714, 0.385714)
 texture = ExtResource("11_7686v")
 
 [node name="ExitSign3" type="Sprite2D" parent="."]
-position = Vector2(856.667, 319.333)
+position = Vector2(802.431, 74.9166)
+scale = Vector2(0.385714, 0.385714)
+texture = ExtResource("11_7686v")
+
+[node name="ExitSign4" type="Sprite2D" parent="."]
+position = Vector2(1173.33, 170.667)
+rotation = 1.5708
 scale = Vector2(0.385714, 0.385714)
 texture = ExtResource("11_7686v")
 
 [node name="AudioHeart" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_86ho3")
-volume_db = 10.0
+volume_db = 18.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="GenerateTimer" to="." method="_on_generate_timer_timeout"]

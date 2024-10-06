@@ -3,8 +3,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CanvasLayer/ColorRect.color.a = 1.0
+	var tween = create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 0.0, 0.6)
+	
 	circle_move()
 	$PlayerLevel1.action_locked = true
+	
+	
 	pass
 
 
@@ -94,7 +100,8 @@ func circle_move():
 func _on_end_zone_body_entered(body):
 	if body is square_player == false:
 		return
-
+	var tween = create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0, 0.6)
 	get_tree().change_scene_to_file("res://Scene/TextTemp.tscn")
 
 
