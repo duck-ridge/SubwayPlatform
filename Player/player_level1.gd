@@ -3,8 +3,11 @@ class_name square_player
 
 @export var move_speed: float = 160.0
 var action_locked: bool = false
+
 func _ready():
 	SignalBus.connect("push_level1", push_level1_effect)
+	$Hint.scale = Vector2(0, 0)
+	$Indicator.hide()
 	linear_damp = 8.0
 
 func _process(delta: float) -> void:

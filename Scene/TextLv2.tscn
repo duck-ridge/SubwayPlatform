@@ -10,14 +10,6 @@ script = ExtResource("1_argvk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.239216, 0.239216, 0.239216, 1)
-
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
 anchors_preset = 8
@@ -54,11 +46,21 @@ theme_override_font_sizes/font_size = 48
 text = "Later, 
     back home, 
         I found myself in the same situation, 
-but on the other side. 
-                            What could I do?
+             but on the other side. 
+                   What could I do?
 "
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239216, 0.239216, 0.239216, 1)
 
 [node name="AudioAirplane" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_reum2")
 volume_db = -10.0
-autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

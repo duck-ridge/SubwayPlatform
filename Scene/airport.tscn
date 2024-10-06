@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5fumjj5dnlpv"]
+
+[ext_resource type="Script" path="res://Scene/airport.gd" id="1_4uhk0"]
+[ext_resource type="AudioStream" uid="uid://dmd2uy1651ohc" path="res://Sound/Airplane_Landing.mp3" id="2_8i0hl"]
+[ext_resource type="Texture2D" uid="uid://dxvk4ivmduup8" path="res://Asset/airport-screen.png" id="2_ef3pg"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4uhk0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AudioAirplane" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8i0hl")
+volume_db = -10.0
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Airport-screen" type="Sprite2D" parent="."]
+position = Vector2(962, 543)
+scale = Vector2(1.52539, 1.52539)
+texture = ExtResource("2_ef3pg")

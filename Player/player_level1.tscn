@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk78dyrnv1j83"]
+[gd_scene load_steps=8 format=3 uid="uid://bk78dyrnv1j83"]
 
 [ext_resource type="Script" path="res://Player/player_level1.gd" id="1_avowl"]
 [ext_resource type="Texture2D" uid="uid://c2culpuno6vvm" path="res://Asset/square_new.png" id="2_4q6fr"]
+[ext_resource type="Texture2D" uid="uid://c4840w5t1luq7" path="res://Asset/help-sign.png" id="3_8yjjp"]
+[ext_resource type="Texture2D" uid="uid://7rux2j2bvag" path="res://Asset/triangle.png" id="3_qurlx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hhwf"]
 size = Vector2(83, 83)
@@ -29,11 +31,12 @@ collision_mask = 9
 shape = SubResource("CircleShape2D_iprle")
 
 [node name="Hint" type="Sprite2D" parent="."]
-z_index = 10
+z_index = 15
 z_as_relative = false
 scale = Vector2(1e-05, 1e-05)
 
 [node name="Label" type="Label" parent="Hint"]
+visible = false
 offset_left = -112.0
 offset_top = -89.0
 offset_right = 132.0
@@ -45,6 +48,28 @@ text = "Do you want to help?
 Yes (F)                No (P)
 
 "
+
+[node name="Background" type="Sprite2D" parent="Hint"]
+position = Vector2(1, -250)
+texture = ExtResource("3_8yjjp")
+
+[node name="ColorRect" type="ColorRect" parent="Hint/Background"]
+visible = false
+z_index = -1
+offset_left = -122.0
+offset_top = -92.0
+offset_right = 143.0
+offset_bottom = -12.0
+color = Color(0, 0, 0, 0.439216)
+
+[node name="Indicator" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+z_index = 10
+position = Vector2(2.38419e-07, -79)
+rotation = 3.14159
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_qurlx")
 
 [connection signal="body_entered" from="HelpZone" to="." method="_on_help_zone_body_entered"]
 [connection signal="body_exited" from="HelpZone" to="." method="_on_help_zone_body_exited"]

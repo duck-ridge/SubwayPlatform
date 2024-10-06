@@ -5,7 +5,7 @@ extends Node2D
 func _ready():
 	$CanvasLayer/ColorRect.color.a = 1.0
 	var tween = create_tween()
-	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 0.0, 0.6)
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 0.0, 1.0)
 	
 	circle_move()
 	$PlayerLevel1.action_locked = true
@@ -101,7 +101,7 @@ func _on_end_zone_body_entered(body):
 	if body is square_player == false:
 		return
 	var tween = create_tween()
-	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0, 0.6)
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0, 1.0).from(0.0)
 	await tween.finished
 	
 	
@@ -110,3 +110,4 @@ func _on_end_zone_body_entered(body):
 
 func _on_action_lock_timer_timeout():
 	$PlayerLevel1.action_locked = false
+	$PlayerLevel1/Indicator.show()

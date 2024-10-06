@@ -5,7 +5,7 @@ extends Node2D
 func _ready():
 	$CanvasLayer/ColorRect.color.a = 1.0
 	var tween = create_tween()
-	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 0.0, 0.6)
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 0.0, 1.0)
 	pass
 
 
@@ -68,7 +68,7 @@ func _on_end_zone_body_entered(body):
 	if body is square_player == false:
 		return
 	var tween = create_tween()
-	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0, 0.6)
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0, 1.0)
 	
 	await tween.finished
 	get_tree().change_scene_to_file("res://Scene/TextLv2.tscn")
