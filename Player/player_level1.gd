@@ -1,7 +1,7 @@
 extends RigidBody2D
-class_name triangle_player
+class_name square_player
 
-@export var move_speed: float = 400.0
+@export var move_speed: float = 300.0
 
 func _ready():
 	SignalBus.connect("push_level1", push_level1_effect)

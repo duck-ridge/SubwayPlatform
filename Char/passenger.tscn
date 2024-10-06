@@ -7,7 +7,6 @@
 script = ExtResource("1_d7lhs")
 
 [node name="Triangle" type="Sprite2D" parent="."]
-scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_216fm")
 
 [node name="DestoryTimer" type="Timer" parent="."]

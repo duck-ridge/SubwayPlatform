@@ -12,9 +12,9 @@ func _ready():
 		return
 	
 	if go_up == true:
-		speed = -55
+		speed = -85
 	else:
-		speed = 55
+		speed = 85
 	
 func random_skin():
 	pass
