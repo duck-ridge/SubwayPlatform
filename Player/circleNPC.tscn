@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddfctowlogfba"]
+[gd_scene load_steps=7 format=3 uid="uid://ddfctowlogfba"]
 
 [ext_resource type="Texture2D" uid="uid://03d4k1i7lo7a" path="res://Asset/circle.png" id="1_esxyy"]
 [ext_resource type="Script" path="res://Player/circleNPC.gd" id="1_javmd"]
 [ext_resource type="AudioStream" uid="uid://bco6267ht8apn" path="res://Sound/Heavy_Breathing.mp3" id="3_txbg6"]
 [ext_resource type="AudioStream" uid="uid://c42ne5muaxs0i" path="res://Sound/Cosmic_Glow.mp3" id="4_wewm2"]
+[ext_resource type="AudioStream" uid="uid://y83k7fjki7f3" path="res://Sound/Human-Heartbeat.mp3" id="5_6twg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtnyt"]
 radius = 31.0
@@ -27,8 +28,12 @@ stream = ExtResource("3_txbg6")
 stream = ExtResource("4_wewm2")
 volume_db = 10.0
 
+[node name="AudioHeart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6twg3")
+volume_db = 20.0
+
 [node name="BreathTimer" type="Timer" parent="."]
-wait_time = 11.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 

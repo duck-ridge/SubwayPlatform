@@ -34,14 +34,16 @@ z_as_relative = false
 scale = Vector2(1e-05, 1e-05)
 
 [node name="Label" type="Label" parent="Hint"]
-offset_left = -72.0
-offset_top = -67.0
-offset_right = 84.0
-offset_bottom = -44.0
-theme_override_colors/font_color = Color(0, 0.654902, 0, 1)
+offset_left = -112.0
+offset_top = -89.0
+offset_right = 132.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0.694118, 0.494118, 0.192157, 1)
 theme_override_fonts/font = SubResource("SystemFont_ojmw5")
 theme_override_font_sizes/font_size = 24
-text = "Press F to help
+text = "Do you want to help?
+Yes (F)                No (P)
+
 "
 
 [connection signal="body_entered" from="HelpZone" to="." method="_on_help_zone_body_entered"]

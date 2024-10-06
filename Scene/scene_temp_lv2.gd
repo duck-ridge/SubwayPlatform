@@ -102,6 +102,9 @@ func _on_end_zone_body_entered(body):
 		return
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0, 0.6)
+	await tween.finished
+	
+	
 	get_tree().change_scene_to_file("res://Scene/TextTemp.tscn")
 
 

@@ -58,11 +58,16 @@ func _on_breath_timer_timeout():
 	is_pulsing = true
 	pulsing()
 	$AudioBreath.play()
-	print("XXXX")
+	$AudioHeart.play()
 	
+signal stop
 func stopplay_breath():
-	is_pulsing = true
+	var pulsing_tween = create_tween()
+	pulsing_tween.set_loops()
+	pulsing_tween.tween_property($Sprite2D, "scale", Vector2(0.5, 0.5), 1.0).from(Vector2(0.5, 0.5))
+	
 	#pulsing_tween.stop()
 	$AudioBreath.playing = false
+	$AudioHeart.playing = false
 	$AudioGlow.play()
-	print("XXX")
+

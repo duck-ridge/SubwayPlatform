@@ -17,6 +17,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body is square_player == false:
 		return
+	body.pulsing()
 	SignalBus.emit_signal("push_level1")
 	play_square_push()
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)

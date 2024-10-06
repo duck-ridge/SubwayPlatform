@@ -61,3 +61,9 @@ func _input(event):
 		SignalBus.emit_signal("stop_breath_audio")
 		$HelpZone/CollisionShape2D.call_deferred("disabled", true)
 		$Hint.hide()
+
+func pulsing():
+	var pulsing_tween = create_tween()
+	pulsing_tween.set_loops()
+	pulsing_tween.tween_property($Square, "scale", Vector2(0.8, 0.8), 0.45).from(Vector2(1.0, 1.0))
+	pulsing_tween.tween_property($Square, "scale", Vector2(1.0, 1.0), 0.45).from(Vector2(0.8, 0.8))

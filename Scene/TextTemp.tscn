@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2k58aaw523cr"]
+[gd_scene load_steps=3 format=3 uid="uid://d2k58aaw523cr"]
+
+[ext_resource type="Script" path="res://Scene/TextTemp.gd" id="1_ctu7i"]
 
 [sub_resource type="SystemFont" id="SystemFont_xack1"]
 
-[node name="Node2D" type="Node2D"]
+[node name="GameEnd" type="Node2D"]
+script = ExtResource("1_ctu7i")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -12,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.239216, 0.239216, 0.239216, 1)
+color = Color(0.198456, 0.253537, 0.236774, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
