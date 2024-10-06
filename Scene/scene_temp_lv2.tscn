@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbymkh7j848g6"]
+[gd_scene load_steps=16 format=3 uid="uid://dbymkh7j848g6"]
 
 [ext_resource type="Script" path="res://Scene/scene_temp_lv2.gd" id="1_nf7cv"]
 [ext_resource type="Texture2D" uid="uid://duttaqncbsg82" path="res://Asset/platform.png" id="2_ctaiq"]
@@ -20,6 +20,9 @@ size = Vector2(2475.33, 246)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6gtb"]
 size = Vector2(159.333, 484.334)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1wmj"]
+size = Vector2(122, 173.333)
 
 [node name="SceneTemp" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -54,7 +57,7 @@ texture = ExtResource("2_ctaiq")
 motion_scale = Vector2(0.6, 0.6)
 
 [node name="Node2D" type="Node2D" parent="ParallaxBackgroundLow/ParallaxLayer1"]
-position = Vector2(-796, 811)
+position = Vector2(-796, 960)
 scale = Vector2(1, 0.75)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -105,13 +108,13 @@ scale = Vector2(5, 5)
 texture = ExtResource("4_lli5x")
 
 [node name="PlayerLevel1" parent="." instance=ExtResource("5_pbcnt")]
-position = Vector2(18.6667, 480)
+position = Vector2(19.3333, 480)
 mass = 5.0
 move_speed = 5000.0
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="PlayerLevel1"]
-zoom = Vector2(1.25, 1.25)
+limit_bottom = 1080
 
 [node name="PointLight2D4" type="PointLight2D" parent="PlayerLevel1"]
 scale = Vector2(1.5, 1.5)
@@ -136,29 +139,24 @@ scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_b7gpn")
 
 [node name="LightSys" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
+visible = false
 
 [node name="PointLight2D1" type="PointLight2D" parent="LightSys"]
 position = Vector2(-164, 414.667)
-scale = Vector2(2, 2)
-color = Color(1, 1, 0.8, 1)
-energy = 0.6
+scale = Vector2(4, 4)
 texture = ExtResource("7_s5l40")
 
 [node name="PointLight2D2" type="PointLight2D" parent="LightSys"]
 position = Vector2(351.333, 542.667)
-scale = Vector2(2, 2)
-color = Color(1, 1, 0.8, 1)
-energy = 0.6
+scale = Vector2(4, 4)
 texture = ExtResource("7_s5l40")
 
 [node name="PointLight2D3" type="PointLight2D" parent="LightSys"]
-position = Vector2(868, 577)
+visible = false
+position = Vector2(753.333, 449.333)
 scale = Vector2(2, 2)
-color = Color(1, 1, 0.8, 1)
-energy = 0.6
 texture = ExtResource("7_s5l40")
+offset = Vector2(57.3333, 63.8333)
 script = ExtResource("8_wmxmw")
 
 [node name="Timer" type="Timer" parent="LightSys/PointLight2D3"]
@@ -166,13 +164,17 @@ wait_time = 0.6
 autostart = true
 
 [node name="PointLight2D5" type="PointLight2D" parent="LightSys"]
-position = Vector2(500, 200)
-scale = Vector2(1.5, 1.5)
-color = Color(1, 1, 0.8, 1)
-energy = 0.7
+position = Vector2(693.333, 386.667)
+scale = Vector2(4, 4)
+texture = ExtResource("7_s5l40")
+
+[node name="PointLight2D6" type="PointLight2D" parent="LightSys"]
+position = Vector2(1225.33, 432.667)
+scale = Vector2(4, 4)
 texture = ExtResource("7_s5l40")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 scale = Vector2(1.5, 1.5)
 color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 
@@ -427,6 +429,7 @@ position = Vector2(0, -141.167)
 shape = SubResource("RectangleShape2D_j6gtb")
 
 [node name="CircleNPC" parent="." instance=ExtResource("11_8n8e4")]
+z_index = 5
 position = Vector2(-400, 560)
 
 [node name="ActionLockTimer" type="Timer" parent="."]
@@ -434,7 +437,16 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="EndZone" type="Area2D" parent="."]
+position = Vector2(1133.33, 476.667)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndZone"]
+position = Vector2(24.3334, 26.6667)
+shape = SubResource("RectangleShape2D_g1wmj")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="LightSys/PointLight2D3/Timer" to="LightSys/PointLight2D3" method="_on_timer_timeout"]
 [connection signal="timeout" from="GenerateTimer" to="." method="_on_generate_timer_timeout"]
 [connection signal="timeout" from="ActionLockTimer" to="." method="_on_action_lock_timer_timeout"]
+[connection signal="body_entered" from="EndZone" to="." method="_on_end_zone_body_entered"]

@@ -17,6 +17,7 @@ func _on_area_2d_body_entered(body):
 	SignalBus.emit_signal("push_level1")
 	play_square_push()
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	$AudioHeart.play()
 	
 	pass # Replace with function body.
 
@@ -24,10 +25,10 @@ func play_square_push():
 
 	var tween = create_tween()
 	#tween.tween_property($Area2D/Triangle, "scale", Vector2.ONE, 1).from(Vector2(0, 0))
-	tween.tween_property($Area2D/Triangle, "scale", Vector2(0.75, 0.75), 0.1).from(Vector2(0, 0))
-	tween.tween_property($Area2D/Triangle, "position", Vector2(10, 0), 0.15).from(Vector2(10, -75))
-	tween.tween_property($Area2D/Triangle, "position", Vector2(10, -75), 0.25).from(Vector2(10, 0))
-	tween.tween_property($Area2D/Triangle, "scale", Vector2.ZERO, 0.25).from(Vector2(0.75, 0.75))
+	tween.tween_property($Area2D/Triangle, "scale", Vector2(0.85, 0.85), 0.1).from(Vector2(0, 0))
+	tween.tween_property($Area2D/Triangle, "position", Vector2(10, 0), 0.15).from(Vector2(10, -125))
+	tween.tween_property($Area2D/Triangle, "position", Vector2(10, -125), 0.25).from(Vector2(10, 0))
+	tween.tween_property($Area2D/Triangle, "scale", Vector2.ZERO, 0.25).from(Vector2(0.85, 0.85))
 	
 @onready var pasgr = preload("res://Char/passenger.tscn")
 var i = 1
@@ -63,4 +64,4 @@ func _on_end_zone_body_entered(body):
 	if body is square_player == false:
 		return
 
-	get_tree().change_scene_to_file("res://Scene/scene_temp_lv2.tscn")
+	get_tree().change_scene_to_file("res://Scene/TextLv2.tscn")

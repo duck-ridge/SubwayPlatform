@@ -2,11 +2,12 @@ extends CharacterBody2D
 class_name  circleNPC
 var is_followed: bool = false
 var can_followed: bool = false
-var speed: int = 140
+var speed: int = 150
 var range
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.connect("help_NPC", hold_hand)
+	SignalBus.connect("stop_breath_audio", stopplay_breath)
 	#is_followed = true
 	pass
 	
@@ -21,9 +22,9 @@ func _process(delta):
 	if can_followed == false:
 		return
 	#print(range)
-	if range < 60:
+	if range < 80:
 		is_followed = false
-	elif range > 110:
+	elif range > 500:
 		is_followed = false
 	else:
 		is_followed = true
@@ -36,3 +37,11 @@ func _process(delta):
 	
 	move_and_slide()
 	pass
+
+
+func _on_breath_timer_timeout():
+	$AudioBreath.play()
+func stopplay_breath():
+	$AudioBreath.playing = false
+	$AudioGlow.play()
+	print("XXX")

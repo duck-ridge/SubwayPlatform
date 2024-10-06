@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyifb6y6bgbjf"]
+
+[ext_resource type="Script" path="res://Scene/TextLv2.gd" id="1_argvk"]
+[ext_resource type="AudioStream" uid="uid://dmd2uy1651ohc" path="res://Sound/Airplane_Landing.mp3" id="2_reum2"]
+
+[sub_resource type="SystemFont" id="SystemFont_xack1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_argvk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -11.0
+offset_right = 114.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.85098, 0.2, 0.180392, 1)
+theme_override_fonts/font = SubResource("SystemFont_xack1")
+theme_override_font_sizes/font_size = 86
+text = "Breaking the Chain"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -481.0
+offset_top = -131.0
+offset_right = 453.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.756863, 0.160784, 0.14902, 1)
+theme_override_fonts/font = SubResource("SystemFont_xack1")
+theme_override_font_sizes/font_size = 48
+text = "Later, 
+    back home, 
+        I found myself in the same situation, 
+but on the other side. 
+                            What could I do?
+"
+
+[node name="AudioAirplane" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_reum2")
+volume_db = -10.0
+autoplay = true

@@ -9,8 +9,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 #func _on_area_2d_body_entered(body):
@@ -69,20 +67,35 @@ func circle_move():
 	tween.tween_property(CircleNPC, "position", Vector2(-100, 560), 5).from(Vector2(-300, 560))
 	
 	tween.tween_property(CircleNPC, "position", Vector2(-100, 560), 0.8).from(Vector2(-100, 560))
+
 	
-	tween.tween_property(CircleNPC, "position", Vector2(-85, 590), 3).from(Vector2(-100, 560))
+	tween.tween_property(CircleNPC, "position", Vector2(-180, 535), 2).from(Vector2(-100, 560))
+	tween.tween_property(CircleNPC, "position", Vector2(-180, 535), 0.5).from(Vector2(-180, 535))
+	
+	#tween.tween_property(CircleNPC, "position", Vector2(-100, 560), 0.8).from(Vector2(-180, 535))
+	
+	tween.tween_property(CircleNPC, "position", Vector2(-85, 590), 4).from(Vector2(-180, 535))
 	
 	tween.tween_property(CircleNPC, "position", Vector2(-85, 590), 0.5).from(Vector2(-85, 590))
 	
 	tween.tween_property(CircleNPC, "position", Vector2(-95, 560), 1.25).from(Vector2(-85, 590))
 	
 	
+	#tween.tween_property(CircleNPC, "position", Vector2(-100, 560), 5).from(Vector2(-300, 560))
+	#
+	#tween.tween_property(CircleNPC, "position", Vector2(-100, 560), 0.8).from(Vector2(-100, 560))
+	
+	#tween.tween_property(CircleNPC, "position", Vector2(-85, 590), 3).from(Vector2(-100, 560))
+	#
+	#tween.tween_property(CircleNPC, "position", Vector2(-85, 590), 0.5).from(Vector2(-85, 590))
+	#
+	#tween.tween_property(CircleNPC, "position", Vector2(-95, 560), 1.25).from(Vector2(-85, 590))
 
 func _on_end_zone_body_entered(body):
 	if body is square_player == false:
 		return
 
-	get_tree().change_scene_to_file("res://Scene/scene_temp.tscn")
+	get_tree().change_scene_to_file("res://Scene/TextTemp.tscn")
 
 
 func _on_action_lock_timer_timeout():

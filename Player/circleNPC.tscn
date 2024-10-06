@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddfctowlogfba"]
+[gd_scene load_steps=6 format=3 uid="uid://ddfctowlogfba"]
 
 [ext_resource type="Texture2D" uid="uid://03d4k1i7lo7a" path="res://Asset/circle.png" id="1_esxyy"]
 [ext_resource type="Script" path="res://Player/circleNPC.gd" id="1_javmd"]
+[ext_resource type="AudioStream" uid="uid://bco6267ht8apn" path="res://Sound/Heavy_Breathing.mp3" id="3_txbg6"]
+[ext_resource type="AudioStream" uid="uid://c42ne5muaxs0i" path="res://Sound/Cosmic_Glow.mp3" id="4_wewm2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtnyt"]
 radius = 26.0
@@ -17,3 +19,16 @@ texture = ExtResource("1_esxyy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gtnyt")
+
+[node name="AudioBreath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_txbg6")
+
+[node name="AudioGlow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wewm2")
+
+[node name="BreathTimer" type="Timer" parent="."]
+wait_time = 11.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="BreathTimer" to="." method="_on_breath_timer_timeout"]

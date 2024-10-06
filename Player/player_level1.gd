@@ -58,5 +58,6 @@ func _input(event):
 	if Input.is_action_just_pressed("help"):
 		
 		SignalBus.emit_signal("help_NPC")
+		SignalBus.emit_signal("stop_breath_audio")
 		$HelpZone/CollisionShape2D.call_deferred("disabled", true)
 		$Hint.hide()

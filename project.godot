@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Subway Platform"
-run/main_scene="res://Scene/scene_temp.tscn"
+run/main_scene="res://Scene/TextTitleScreen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

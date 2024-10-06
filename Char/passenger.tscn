@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwrtmwmbh410y"]
 
 [ext_resource type="Script" path="res://Char/passenger.gd" id="1_d7lhs"]
-[ext_resource type="Texture2D" uid="uid://7rux2j2bvag" path="res://Asset/triangle.png" id="2_216fm"]
+[ext_resource type="Texture2D" uid="uid://b207xotqgstjb" path="res://Asset/triangle_new.png" id="2_4tua6"]
 
 [node name="Passenger" type="CharacterBody2D"]
 script = ExtResource("1_d7lhs")
 
 [node name="Triangle" type="Sprite2D" parent="."]
-texture = ExtResource("2_216fm")
+texture = ExtResource("2_4tua6")
 
 [node name="DestoryTimer" type="Timer" parent="."]
 wait_time = 20.0

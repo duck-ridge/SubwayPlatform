@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk78dyrnv1j83"]
 
-[ext_resource type="Texture2D" uid="uid://cg6y8hslryqax" path="res://Asset/square.png" id="1_67310"]
 [ext_resource type="Script" path="res://Player/player_level1.gd" id="1_avowl"]
+[ext_resource type="Texture2D" uid="uid://c2culpuno6vvm" path="res://Asset/square_new.png" id="2_4q6fr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hhwf"]
 size = Vector2(83, 83)
@@ -15,8 +15,7 @@ radius = 78.9177
 script = ExtResource("1_avowl")
 
 [node name="Square" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.443137, 0.443137, 1)
-texture = ExtResource("1_67310")
+texture = ExtResource("2_4q6fr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)

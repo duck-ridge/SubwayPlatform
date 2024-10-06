@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b07tebonlixvb"]
 
-[ext_resource type="Texture2D" uid="uid://7rux2j2bvag" path="res://Asset/triangle.png" id="1_y1grv"]
+[ext_resource type="Texture2D" uid="uid://b207xotqgstjb" path="res://Asset/triangle_new.png" id="1_3n8wj"]
 
 [node name="PushSquare" type="Sprite2D"]
-texture = ExtResource("1_y1grv")
+texture = ExtResource("1_3n8wj")
