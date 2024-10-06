@@ -25,6 +25,7 @@ stream = ExtResource("3_txbg6")
 
 [node name="AudioGlow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wewm2")
+volume_db = 20.0
 
 [node name="BreathTimer" type="Timer" parent="."]
 wait_time = 11.0
