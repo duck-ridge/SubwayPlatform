@@ -1,13 +1,16 @@
 extends RigidBody2D
 class_name square_player
 
-@export var move_speed: float = 300.0
-
+@export var move_speed: float = 160.0
+var action_locked: bool = false
 func _ready():
-	SignalBus.connect("push_level1", push_level1_effect)
+	
 	linear_damp = 8.0
 
 func _process(delta: float) -> void:
+	if action_locked == true:
+		return
+		
 	Global.player_pos = position
 	
 	var direction = Vector2.ZERO
@@ -32,3 +35,28 @@ func _process(delta: float) -> void:
 func push_level1_effect():
 	apply_central_force(Vector2(0, 1) * 120000)
 	print("push_level1_effect here")
+
+func show_help_hint():
+	var tween = create_tween()
+	tween.tween_property($Hint, "scale", Vector2(1, 1), 0.1).from(Vector2.ZERO)
+
+func hide_help_hint():
+	var tween = create_tween()
+	tween.tween_property($Hint, "scale", Vector2(0, 0), 0.1).from(Vector2.ONE)
+	
+
+func _on_help_zone_body_entered(body):
+	if body is circleNPC:
+		print("x")
+		show_help_hint()
+
+func _on_help_zone_body_exited(body):
+	if body is circleNPC:
+		hide_help_hint()
+		
+func _input(event):
+	if Input.is_action_just_pressed("help"):
+		
+		SignalBus.emit_signal("help_NPC")
+		$HelpZone/CollisionShape2D.call_deferred("disabled", true)
+		$Hint.hide()

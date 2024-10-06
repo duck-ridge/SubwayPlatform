@@ -9,6 +9,8 @@ var go_up: bool
 
 func _ready():
 	if stand == true:
+		$DestoryTimer.stop()
+		
 		return
 	
 	if go_up == true:

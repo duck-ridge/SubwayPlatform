@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbymkh7j848g6"]
+[gd_scene load_steps=15 format=3 uid="uid://dbymkh7j848g6"]
 
 [ext_resource type="Script" path="res://Scene/scene_temp_lv2.gd" id="1_nf7cv"]
 [ext_resource type="Texture2D" uid="uid://duttaqncbsg82" path="res://Asset/platform.png" id="2_ctaiq"]
@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://7rux2j2bvag" path="res://Asset/triangle.png" id="6_b7gpn"]
 [ext_resource type="Texture2D" uid="uid://b31jv117h6esl" path="res://Asset/light.png" id="7_s5l40"]
 [ext_resource type="Script" path="res://Char/PointLightBlink.gd" id="8_wmxmw"]
-[ext_resource type="PackedScene" uid="uid://bwrtmwmbh410y" path="res://Char/passenger.tscn" id="9_0wejt"]
+[ext_resource type="PackedScene" uid="uid://blklt6bq1bke8" path="res://Char/passengersquare.tscn" id="9_u34p3"]
 [ext_resource type="AudioStream" uid="uid://fuo0235r84b1" path="res://Sound/Metro.mp3" id="10_nl3ma"]
+[ext_resource type="PackedScene" uid="uid://ddfctowlogfba" path="res://Player/circleNPC.tscn" id="11_8n8e4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plcb6"]
 size = Vector2(20, 21.3334)
@@ -18,7 +19,7 @@ size = Vector2(20, 21.3334)
 size = Vector2(2475.33, 246)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6gtb"]
-size = Vector2(159.333, 151)
+size = Vector2(159.333, 484.334)
 
 [node name="SceneTemp" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -104,7 +105,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("4_lli5x")
 
 [node name="PlayerLevel1" parent="." instance=ExtResource("5_pbcnt")]
-position = Vector2(-465.333, 518)
+position = Vector2(18.6667, 480)
 mass = 5.0
 move_speed = 5000.0
 metadata/_edit_group_ = true
@@ -119,18 +120,24 @@ energy = 0.65
 texture = ExtResource("7_s5l40")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(88.6667, 532.667)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_plcb6")
+disabled = true
 
 [node name="Triangle" type="Sprite2D" parent="Area2D"]
+visible = false
 position = Vector2(10, -75)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_b7gpn")
 
 [node name="LightSys" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="PointLight2D1" type="PointLight2D" parent="LightSys"]
 position = Vector2(-164, 414.667)
@@ -173,112 +180,212 @@ color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 
 [node name="PassengerStaticSys" type="Node" parent="."]
 
-[node name="Passenger1" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(299, 685)
+[node name="PassengerSquare" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-20, 829)
 stand = true
 
-[node name="Passenger2" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(436, 651)
+[node name="PassengerSquare3" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(22, 773)
 stand = true
 
-[node name="Passenger3" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(216, 667)
+[node name="PassengerSquare4" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(109, 796)
 stand = true
 
-[node name="Passenger4" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(174, 609)
+[node name="PassengerSquare2" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-85, 750)
 stand = true
 
-[node name="Passenger5" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(99, 641)
+[node name="PassengerSquare5" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-237, 638)
 stand = true
 
-[node name="Passenger6" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(235, 454)
+[node name="PassengerSquare6" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-177, 710)
 stand = true
 
-[node name="Passenger7" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(556, 527)
+[node name="PassengerSquare7" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-91, 665)
 stand = true
 
-[node name="Passenger8" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(208, 564)
+[node name="PassengerSquare8" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-257, 526)
 stand = true
 
-[node name="Passenger9" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(166, 506)
+[node name="PassengerSquare9" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-335, 605)
 stand = true
 
-[node name="Passenger10" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(91, 538)
+[node name="PassengerSquare10" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-451, 551)
 stand = true
 
-[node name="Passenger11" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(-48, 674)
+[node name="PassengerSquare11" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-560, 592)
 stand = true
 
-[node name="Passenger25" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(-510, 620)
+[node name="PassengerSquare12" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-538, 499)
 stand = true
 
-[node name="Passenger26" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(-280, 589)
+[node name="PassengerSquare13" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-351, 438)
 stand = true
 
-[node name="Passenger27" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(455, 391)
+[node name="PassengerSquare14" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(1.99994, 563)
 stand = true
 
-[node name="Passenger12" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(-138, 487)
+[node name="PassengerSquare15" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(206, 726)
 stand = true
 
-[node name="Passenger13" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(79, 444)
+[node name="PassengerSquare16" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(206, 599)
 stand = true
 
-[node name="Passenger14" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(188, 356)
+[node name="PassengerSquare17" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(105, 659)
 stand = true
 
-[node name="Passenger15" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(581, 658)
+[node name="PassengerSquare18" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-132, 535)
 stand = true
 
-[node name="Passenger17" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(501, 590)
+[node name="PassengerSquare19" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-180, 406)
 stand = true
 
-[node name="Passenger18" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(658, 519)
+[node name="PassengerSquare20" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-650, 721)
 stand = true
 
-[node name="Passenger19" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(661, 645)
+[node name="PassengerSquare21" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-637, 640)
 stand = true
 
-[node name="Passenger20" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(991, 517)
+[node name="PassengerSquare22" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-428, 705)
 stand = true
 
-[node name="Passenger21" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(765, 386)
+[node name="PassengerSquare23" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(347, 749)
 stand = true
 
-[node name="Passenger22" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(1077, 677)
+[node name="PassengerSquare24" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(476, 798)
 stand = true
 
-[node name="Passenger23" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(975, 615)
+[node name="PassengerSquare25" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(488, 652)
 stand = true
 
-[node name="Passenger24" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(1271, 560)
+[node name="PassengerSquare26" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(577, 697)
 stand = true
 
-[node name="Passenger16" parent="PassengerStaticSys" instance=ExtResource("9_0wejt")]
-position = Vector2(804, 641)
+[node name="PassengerSquare27" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(732, 588)
+stand = true
+
+[node name="PassengerSquare28" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(902, 759)
+stand = true
+
+[node name="PassengerSquare29" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(1031, 684)
+stand = true
+
+[node name="PassengerSquare36" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(769, 691)
+stand = true
+
+[node name="PassengerSquare37" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(818, 463)
+stand = true
+
+[node name="PassengerSquare38" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(477, 509)
+stand = true
+
+[node name="PassengerSquare39" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(344, 593)
+stand = true
+
+[node name="PassengerSquare40" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(1212, 595)
+stand = true
+
+[node name="PassengerSquare41" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(1035, 452)
+stand = true
+
+[node name="PassengerSquare42" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(604, 367)
+stand = true
+
+[node name="PassengerSquare43" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(344, 367)
+stand = true
+
+[node name="PassengerSquare44" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(192, 398)
+stand = true
+
+[node name="PassengerSquare45" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(261, 497)
+stand = true
+
+[node name="PassengerSquare46" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(-90.9999, 277)
+stand = true
+
+[node name="PassengerSquare47" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(213, 228)
+stand = true
+
+[node name="PassengerSquare48" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(461, 311)
+stand = true
+
+[node name="PassengerSquare49" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(768, 276)
+stand = true
+
+[node name="PassengerSquare50" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(957, 363)
+stand = true
+
+[node name="PassengerSquare51" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(653, 526)
+stand = true
+
+[node name="PassengerSquare52" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(653, 526)
+stand = true
+
+[node name="PassengerSquare30" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(1074, 603)
+stand = true
+
+[node name="PassengerSquare31" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(961, 614)
+stand = true
+
+[node name="PassengerSquare32" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(859, 650)
+stand = true
+
+[node name="PassengerSquare33" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(1128, 755)
+stand = true
+
+[node name="PassengerSquare34" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(799, 780)
+stand = true
+
+[node name="PassengerSquare35" parent="PassengerStaticSys" instance=ExtResource("9_u34p3")]
+position = Vector2(670, 780)
 stand = true
 
 [node name="GenerateTimer" type="Timer" parent="."]
@@ -302,7 +409,7 @@ position = Vector2(223.667, 106.333)
 shape = SubResource("RectangleShape2D_kf77w")
 
 [node name="Wall2" type="StaticBody2D" parent="WallSys"]
-position = Vector2(32.6667, 233.333)
+position = Vector2(47.3333, -98.6667)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -316,9 +423,18 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallSys/Wall3"]
-position = Vector2(0, 25.5)
+position = Vector2(0, -141.167)
 shape = SubResource("RectangleShape2D_j6gtb")
+
+[node name="CircleNPC" parent="." instance=ExtResource("11_8n8e4")]
+position = Vector2(-400, 560)
+
+[node name="ActionLockTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="LightSys/PointLight2D3/Timer" to="LightSys/PointLight2D3" method="_on_timer_timeout"]
 [connection signal="timeout" from="GenerateTimer" to="." method="_on_generate_timer_timeout"]
+[connection signal="timeout" from="ActionLockTimer" to="." method="_on_action_lock_timer_timeout"]

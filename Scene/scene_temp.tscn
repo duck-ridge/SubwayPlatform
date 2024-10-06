@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://do4qh1aur645f"]
+[gd_scene load_steps=16 format=3 uid="uid://do4qh1aur645f"]
 
 [ext_resource type="Script" path="res://Scene/scene_temp.gd" id="1_uwx1d"]
 [ext_resource type="Texture2D" uid="uid://dyvydgy63wsqg" path="res://Asset/railway.png" id="1_xjgo4"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bwrtmwmbh410y" path="res://Char/passenger.tscn" id="8_4cye6"]
 [ext_resource type="Script" path="res://Char/PointLightBlink.gd" id="8_fx5q7"]
 [ext_resource type="AudioStream" uid="uid://fuo0235r84b1" path="res://Sound/Metro.mp3" id="9_vlq8p"]
+[ext_resource type="Texture2D" uid="uid://c5updq4124o6v" path="res://Asset/exit_sign.png" id="11_7686v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plcb6"]
 size = Vector2(20, 21.3334)
@@ -163,7 +164,7 @@ energy = 0.65
 texture = ExtResource("7_c28w8")
 
 [node name="PointLight2D5" type="PointLight2D" parent="LightSys"]
-position = Vector2(1244.67, 418)
+position = Vector2(654.667, 244.667)
 scale = Vector2(1.5, 1.5)
 color = Color(1, 1, 0.8, 1)
 energy = 0.7
@@ -330,6 +331,21 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndZone"]
 position = Vector2(-0.333252, 1)
 shape = SubResource("RectangleShape2D_j1t1d")
+
+[node name="ExitSign1" type="Sprite2D" parent="."]
+position = Vector2(-245.333, 319.333)
+scale = Vector2(0.385714, 0.385714)
+texture = ExtResource("11_7686v")
+
+[node name="ExitSign2" type="Sprite2D" parent="."]
+position = Vector2(294.667, 324)
+scale = Vector2(0.385714, 0.385714)
+texture = ExtResource("11_7686v")
+
+[node name="ExitSign3" type="Sprite2D" parent="."]
+position = Vector2(856.667, 319.333)
+scale = Vector2(0.385714, 0.385714)
+texture = ExtResource("11_7686v")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="LightSys/PointLight2D3/Timer" to="LightSys/PointLight2D3" method="_on_timer_timeout"]

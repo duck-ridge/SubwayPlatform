@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Metro.mp3-bf92ecfc4db35696e8df00c22eb1a72e.mp
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

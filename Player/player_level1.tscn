@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk78dyrnv1j83"]
+[gd_scene load_steps=6 format=3 uid="uid://bk78dyrnv1j83"]
 
 [ext_resource type="Texture2D" uid="uid://cg6y8hslryqax" path="res://Asset/square.png" id="1_67310"]
 [ext_resource type="Script" path="res://Player/player_level1.gd" id="1_avowl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hhwf"]
 size = Vector2(83, 83)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iprle"]
+radius = 78.9177
+
+[sub_resource type="SystemFont" id="SystemFont_ojmw5"]
 
 [node name="PlayerLevel1" type="RigidBody2D"]
 script = ExtResource("1_avowl")
@@ -16,3 +21,28 @@ texture = ExtResource("1_67310")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_7hhwf")
+
+[node name="HelpZone" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HelpZone"]
+shape = SubResource("CircleShape2D_iprle")
+
+[node name="Hint" type="Sprite2D" parent="."]
+z_index = 10
+z_as_relative = false
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Label" type="Label" parent="Hint"]
+offset_left = -72.0
+offset_top = -67.0
+offset_right = 84.0
+offset_bottom = -44.0
+theme_override_colors/font_color = Color(0, 0.654902, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_ojmw5")
+theme_override_font_sizes/font_size = 24
+text = "Press F provide help"
+
+[connection signal="body_entered" from="HelpZone" to="." method="_on_help_zone_body_entered"]
+[connection signal="body_exited" from="HelpZone" to="." method="_on_help_zone_body_exited"]
